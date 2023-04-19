@@ -1,0 +1,25 @@
+[0m[[0m[31merror[0m] [0m[0mD:\Big_Data_Engineering\OnlineRetail\untitled\src\main\scala\producer\Producer.scala:5:12: object apache is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Big_Data_Engineering\OnlineRetail\untitled\src\main\scala\producer\Producer.scala:6:12: object json4s is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.json4s._[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Big_Data_Engineering\OnlineRetail\untitled\src\main\scala\producer\Producer.scala:7:12: object json4s is not a member of package org[0m
+[0m[[0m[31merror[0m] [0m[0mimport org.json4s.native.Serialization[0m
+[0m[[0m[31merror[0m] [0m[0m           ^[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Big_Data_Engineering\OnlineRetail\untitled\src\main\scala\producer\Producer.scala:27:24: not found: type KafkaProducer[0m
+[0m[[0m[31merror[0m] [0m[0m    val producer = new KafkaProducer[String, String](props)[0m
+[0m[[0m[31merror[0m] [0m[0m                       ^[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Big_Data_Engineering\OnlineRetail\untitled\src\main\scala\producer\Producer.scala:43:29: not found: type Formats[0m
+[0m[[0m[31merror[0m] [0m[0m      implicit val formats: Formats = DefaultFormats[0m
+[0m[[0m[31merror[0m] [0m[0m                            ^[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Big_Data_Engineering\OnlineRetail\untitled\src\main\scala\producer\Producer.scala:43:39: not found: value DefaultFormats[0m
+[0m[[0m[31merror[0m] [0m[0m      implicit val formats: Formats = DefaultFormats[0m
+[0m[[0m[31merror[0m] [0m[0m                                      ^[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Big_Data_Engineering\OnlineRetail\untitled\src\main\scala\producer\Producer.scala:44:22: not found: value Serialization[0m
+[0m[[0m[31merror[0m] [0m[0m      val jsonData = Serialization.write(data)[0m
+[0m[[0m[31merror[0m] [0m[0m                     ^[0m
+[0m[[0m[31merror[0m] [0m[0mD:\Big_Data_Engineering\OnlineRetail\untitled\src\main\scala\producer\Producer.scala:46:24: not found: type ProducerRecord[0m
+[0m[[0m[31merror[0m] [0m[0m      val record = new ProducerRecord[String, String]("test-topic", s"key_${data.InvoiceNo}", jsonData)[0m
+[0m[[0m[31merror[0m] [0m[0m                       ^[0m
+[0m[[0m[31merror[0m] [0m[0m8 errors found[0m
