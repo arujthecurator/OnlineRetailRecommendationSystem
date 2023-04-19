@@ -1,3 +1,3 @@
 # OnlineRetailRecommendationSystem
-Install Scala plugin in Intellij IDEA
-Install java8+ in your machine
+1. Install Scala plugin in Intellij IDEA
+2. Install java8+ in your machine
