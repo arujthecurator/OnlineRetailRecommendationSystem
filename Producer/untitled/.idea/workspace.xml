@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="22f9e417-5861-4a11-bcc8-e47a32d608f7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/libraries/sbt__com_github_luben_zstd_jni_1_4_9_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/libraries/sbt__com_thoughtworks_paranamer_paranamer_2_8_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/libraries/sbt__org_apache_kafka_kafka_clients_2_8_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/libraries/sbt__org_json4s_json4s_ast_2_12_4_0_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/libraries/sbt__org_json4s_json4s_core_2_12_4_0_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/libraries/sbt__org_json4s_json4s_native_2_12_4_0_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/libraries/sbt__org_json4s_json4s_native_core_2_12_4_0_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/libraries/sbt__org_json4s_json4s_scalap_2_12_4_0_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/libraries/sbt__org_lz4_lz4_java_1_7_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/libraries/sbt__org_scala_lang_scala_library_2_12_17_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/libraries/sbt__org_slf4j_slf4j_api_1_7_32_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/libraries/sbt__org_slf4j_slf4j_nop_1_7_32_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/libraries/sbt__org_xerial_snappy_snappy_java_1_1_8_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Consumer/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Consumer/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/modules/kafka-producer-consumer-build.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/modules/kafka-producer-consumer.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/sbt.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Consumer/.idea/scala_compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_github_luben_zstd_jni_1_4_9_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__com_thoughtworks_paranamer_paranamer_2_8_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_apache_kafka_kafka_clients_2_8_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_json4s_json4s_ast_2_12_4_0_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_json4s_json4s_core_2_12_4_0_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_json4s_json4s_native_2_12_4_0_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_json4s_json4s_native_core_2_12_4_0_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_json4s_json4s_scalap_2_12_4_0_3_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_lz4_lz4_java_1_7_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_scala_lang_scala_library_2_12_15_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_slf4j_slf4j_api_1_7_32_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_slf4j_slf4j_nop_1_7_32_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/sbt__org_xerial_snappy_snappy_java_1_1_8_1_jar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/kafka-producer-consumer-build.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/kafka-producer-consumer.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sbt.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sbt.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/scala_compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/scala_compiler.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectId" id="2Ohv7UUTjA3H7Uei6llNSF9N5KQ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Producer" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="producer.Producer" />
+      <module name="kafka-producer-consumer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="producer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Producer" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="22f9e417-5861-4a11-bcc8-e47a32d608f7" name="Changes" comment="" />
+      <created>1682025465735</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682025465735</updated>
+      <workItem from="1682025468268" duration="39000" />
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
