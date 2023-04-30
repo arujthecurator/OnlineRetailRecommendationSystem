@@ -43,10 +43,10 @@ object Producer extends App {
     implicit val formats: Formats = DefaultFormats
     val jsonData = Serialization.write(data)
 
-    val record = new ProducerRecord[String, String]("test-topic", s"key_${data.InvoiceNo}", jsonData)
+    val record = new ProducerRecord[String, String]("orders-topic", s"key_${data.InvoiceNo}", jsonData)
     producer.send(record)
-    println(s"Sent record: $record")
-    Thread.sleep(2000) // Sleep for 2 seconds after each line is read
+    println(jsonData)
+    Thread.sleep(50) // Sleep for 2 seconds after each line is read
     //}
   }
   producer.close()
