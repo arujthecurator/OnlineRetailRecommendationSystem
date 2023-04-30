@@ -1,93 +1,82 @@
-import scala.collection.mutable.ListBuffer
-import scala.io.Source
+package consumer
 
-object GSPAlgorithm {
-  def main(args: Array[String]): Unit = {
-    val inputFileName = "input.txt"
-    val minSupport = 2
+import scala.language.postfixOps
 
-    val input: List[List[String]] = Source.fromFile(inputFileName).getLines.map(line => line.trim.split("\\s+").toList).toList
 
-    val frequentItems = findFrequentItems(input, minSupport)
+object ml extends App {
 
-    println(s"Frequent items: ${frequentItems.mkString(", ")}")
+  import scala.collection.mutable
+  import scala.io.Source
+  import scala.language.postfixOps
 
-    val cart: List[String] = List("a", "b")
+  def gsp(logFile: String, minSup: Int): List[Set[String]] = {
 
-    val recommendations = findRecommendations(cart, frequentItems, minSupport)
+    // read log file and group transactions by invoice number
+    val transactions = Source.fromFile(logFile).getLines().toList.map(_.split(","))
+    val groupedTransactions = transactions.groupBy(_.head).values.toList.map(_.map(_ (2)).sorted)
 
-    println(s"Recommendations: ${recommendations.mkString(", ")}")
-  }
+    // initialize item frequency
+    val itemFreq = mutable.Map[String, Int]().withDefaultValue(0)
 
-  def findFrequentItems(data: List[List[String]], minSupport: Int): List[List[String]] = {
-    var candidate1: ListBuffer[List[String]] = ListBuffer.empty
-    var frequentItems: ListBuffer[List[String]] = ListBuffer.empty
-
-    // Find 1-item sequences
-    for (transaction <- data; item <- transaction) {
-      if (!candidate1.contains(List(item))) {
-        candidate1 += List(item)
+    // get 1-itemsets
+    for (transaction <- groupedTransactions) {
+      for (item <- transaction) {
+        itemFreq(item) += 1
       }
     }
 
-    // Find frequent 1-item sequences
-    for (itemset <- candidate1) {
-      val freq = calcFrequency(data, itemset)
-      if (freq >= minSupport) {
-        frequentItems += itemset
-      }
-    }
+    // filter itemsets that meet the minimum support threshold
+    val freqItems = itemFreq.filter(_._2 >= minSup).keys.toSet
 
-    var k = 2
-    var candidateK: ListBuffer[List[String]] = frequentItems
-    var prunedCandidateK: ListBuffer[List[String]] = candidateK
+    // initialize candidate itemsets
+    var candidateItemsets = freqItems.map(Set(_)).toList
 
-    // Find k-item sequences
-    while (prunedCandidateK.nonEmpty) {
-      var candidateKPlus1: ListBuffer[List[String]] = ListBuffer.empty
-      for (i <- prunedCandidateK.indices; j <- (i + 1) until prunedCandidateK.size) {
-        if (prunedCandidateK(i).drop(1) == prunedCandidateK(j).dropRight(1)) {
-          val newCandidate = prunedCandidateK(i) :+ prunedCandidateK(j).last
-          candidateKPlus1 += newCandidate
+    // initialize frequent itemsets
+    var freqItemsets = candidateItemsets.filter(itemset => itemset.forall(freqItems.contains))
+
+    // loop until there are no more candidate itemsets
+    while (candidateItemsets.nonEmpty) {
+
+      // generate new candidate itemsets
+      val newCandidateItemsets = candidateItemsets.flatMap(itemset => freqItems.filter(!itemset.contains(_)).map(item => itemset + item))
+
+      // count support of candidate itemsets
+      val candidateSupport = mutable.Map[Set[String], Int]().withDefaultValue(0)
+      for (transaction <- groupedTransactions) {
+        for (candidateItemset <- newCandidateItemsets) {
+          if (candidateItemset.subsetOf(transaction.toSet)) {
+            candidateSupport(candidateItemset) += 1
+          }
         }
       }
-      prunedCandidateK = ListBuffer.empty
-      for (c <- candidateKPlus1) {
-        val freq = calcFrequency(data, c)
-        if (freq >= minSupport) {
-          frequentItems += c
-          prunedCandidateK += c
-        }
-      }
-      candidateK = candidateKPlus1
-      k += 1
+
+      // filter candidate itemsets that meet the minimum support threshold
+      candidateItemsets = candidateSupport.filter(_._2 >= minSup).keys.toList
+
+      // add frequent itemsets to list
+      freqItemsets ++= candidateItemsets
+
     }
 
-    frequentItems.toList
+    //  // get itemsets that contain the input
+    //  val inputSet = input.split(",").toSet
+    //  val relevantItemsets = freqItemsets.filter(_.intersect(inputSet) == inputSet)
+    //
+    //  // get the item with highest frequency count among relevant itemsets
+    //  val itemCounts = mutable.Map[String, Int]().withDefaultValue(0)
+    //  for (itemset <- relevantItemsets) {
+    //    for (item <- itemset) {
+    //      itemCounts(item) += 1
+    //    }
+    //  }
+    //
+    //  val highestFreqItem = itemCounts.filterKeys(!inputSet.contains(_)).maxBy(_._2)._1
+
+    //  highestFreqItem
+    freqItemsets
   }
 
-  def calcFrequency(data: List[List[String]], itemset: List[String]): Int = {
-    data.count(t => itemset.forall(t.contains))
-  }
+  val result = gsp("/Users/mohith.kamanuru/Desktop/OnlineRetailRecommendationSystem/Producer/untitled/src/main/scala/producer/online.retail.log", 7500)
+  print(result.length     )
 
-  def findRecommendations(cart: List[String], frequentItems: List[List[String]], minSupport: Int): List[String] = {
-    val recommendation: ListBuffer[String] = ListBuffer.empty
-
-    for (itemset <- frequentItems.reverse) {
-      if (itemset.length > cart.length && itemset.take(cart.length) == cart) {
-        val missingItem = itemset.drop(cart.length).head
-        if (!recommendation.contains(missingItem)) {
-          recommendation += missingItem
-        }
-      }
-    }
-
-    if (recommendation.isEmpty) {
-      // If no recommendations found from frequent items, use update algorithm
-      val updateRecommendations = updateRecommendation(cart, frequentItems, minSupport)
-      if (updateRecommendations.nonEmpty) {
-        recommendation ++= updateRecommendations
-      }
-    }
-
-    recommendation.toList
+}

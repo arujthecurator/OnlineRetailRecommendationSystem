@@ -3,7 +3,8 @@ package consumer
 import java.time.Duration
 import java.util.{Collections, Properties}
 import org.apache.kafka.clients.consumer.{ConsumerConfig, ConsumerRecord, KafkaConsumer}
-import org.apache.kafka.common.serialization.StringDeserializer
+import org.apache.kafka.clients.producer.{KafkaProducer, ProducerConfig, ProducerRecord}
+import org.apache.kafka.common.serialization.{StringDeserializer, StringSerializer}
 import org.json4s._
 import org.json4s.native.JsonMethods._
 
@@ -32,7 +33,14 @@ object Consumer extends App {
 
   val consumer = new KafkaConsumer[String, String](props)
 
-  consumer.subscribe(Collections.singletonList("test-topic"))
+  consumer.subscribe(Collections.singletonList("orders-topic"))
+
+  val producerProps = new Properties()
+  producerProps.put("bootstrap.servers", "localhost:9092")
+  producerProps.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
+  producerProps.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
+
+  val producer = new KafkaProducer[String, String](producerProps)
 
   val descriptionsByInvoice: mutable.Map[String, mutable.ListBuffer[String]] = mutable.Map()
 
@@ -46,6 +54,19 @@ object Consumer extends App {
       } else {
         descriptionsByInvoice(invoice) += description
       }
+
+      val country = record.value().split(",")(7).split(":")(1).replaceAll("\"", "").replaceAll("}", "")
+      val continent = country match {
+        case "Singapore" | "Hong Kong" | "Saudi Arabia" | "Japan" | "United Arab Emirates" | "Lebanon" | "Bahrain" | "Cyprus" | "Israel" | "Turkey" | "Russia" | "Kuwait" | "Qatar" | "Jordan" | "Oman" | "India" | "China" => "asia"
+        case "Portugal" | "Iceland" | "Malta" | "Greece" | "Netherlands" | "Sweden" | "Austria" | "Poland" | "France" | "Lithuania" | "RSA" | "Channel Islands" | "European Community" | "United Kingdom" | "Switzerland" | "Spain" | "Czech Republic" | "Belgium" | "Norway" | "EIRE" | "Finland" | "Denmark" | "Italy" | "Germany" => "europe"
+        case "Brazil" | "Argentina" => "south-america"
+        case "USA" | "Canada" => "north-america"
+        case "Australia" | "New Zealand" => "australia"
+        case _ => "unspecified"
+      }
+      val topic = continent+"-topic"
+      val message = new ProducerRecord[String, String](topic, invoice, record.value())
+      producer.send(message)
     }
 
     if (descriptionsByInvoice.nonEmpty) {
@@ -55,8 +76,10 @@ object Consumer extends App {
         descriptions.foreach(description => println(s"\t$description"))
       }
     }
+
   }
 
+  producer.close()
   consumer.close()
 }
 
