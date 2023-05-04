@@ -6,21 +6,21 @@
 
 
 ### Set up process:
-1. Execute the following command to publich the docker images to docker
+1. Execute the following command to publish the docker images to docker
   "docker compose -f ./docker-compose-expose.yml up --detach"
 2. Clone the project to local
 
 ### Getting the application started:
 #### Producer:
 1. Import the Producer seprate projects to Intellij as Scala sbt project.
-2. Run the producer file, We should be able to see the messages being published from the console. This means that the messages as being pushed to orders-topic.
+2. Run the producer file, We should be able to see the messages being published from the console. This means that the messages are being pushed to orders-topic.
 
 #### Consumer:
 1. Import the Producer seprate projects to Intellij as Scala sbt project.
-2. Now, run the consumers. Since we will mutliple consumer application, we run them indivually to see the execution.
+2. Now, run the consumers. Since we gave mutliple consumer applications, we run them indivually to see the execution.
 
 ##### PartitionConsumer:
-1. Run the PartitionComsumer.scala file, post start we can see the message being consumed from orders-topic.
+1. Run the PartitionComsumer.scala file, once the application has started we can see the message being consumed from orders-topic.
 2. This consumer segregates the message load to different topics based the corresponding continent topic.
 3. Now run all the 6 continent based consumer scala files.
 4. We should be able to see the messages being consumed as per the countries-contient mapping.
@@ -28,10 +28,10 @@
 ##### DiscountConsumer:
 1. This consumer takes the messages from the orders-topic, waits till all the messages for the respective invoice is consumed and aggregates them and apply some discount.
 2. Run the DiscountConsumer.scala file.
-2. Post execution, we should be able to see single message for each invoice, with mutliple stockCode in it. This explains that the orderItems as aggregated to 1 single order.
+2. After execution, we should be able to see single message for each invoice, with mutliple stockCode in it. This explains that the orderItems as aggregated to one single order.
 
 ##### RecommandationConsumer:
-1. This consumer takes the messages continuously, based the items added in the cart, program recommand the most frequently bought items with it to the customer.
+1. This consumer takes the messages continuously and based on the items added in the cart, the consumer recommends the most frequently bought items with it to the customer.
 2. Run the RecommandationConsumer.scala.
-3. Post execution, this program calls gps method in ML.scala file, which records the most frequently bought items mapping and stores them to result.log file.
-4. Once the grouping of items saved to result.log file, the program continuously consumes the messages from orders-topic and based the items consumed, it recommands the items to customer. We should be able to see the same in the console log.
+3. After execution, this program calls gps method in ML.scala file, which records the most frequently bought items mapping and stores them to result.log file.
+4. Once the grouping of items are saved to result.log file, the program continuously consumes the messages from orders-topic and based on the items consumed, it recommends the items to customer. We should be able to see these results in the console log.
