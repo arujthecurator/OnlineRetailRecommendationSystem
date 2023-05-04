@@ -6,30 +6,43 @@ import org.apache.kafka.clients.producer.{KafkaProducer, ProducerRecord}
 import org.json4s._
 import org.json4s.native.Serialization
 
-case class Data(
-                 InvoiceNo: String,
-                 StockCode: String,
-                 Description: String,
-                 Quantity: Int,
-                 InvoiceDate: String,
-                 UnitPrice: Double,
-                 CustomerID: String,
-                 Country: String
-               )
+// class for the order data
+case class OrderData(
+                      invoiceNo: String,
+                      stockCode: String,
+                      description: String,
+                      quantity: Int,
+                      invoiceDate: String,
+                      unitPrice: Double,
+                      customerID: String,
+                      country: String
+                    )
 
 object Producer extends App {
-  //def main(args: Array[String]): Unit = {
+
+  // Set up Kafka producer configuration properties
   val props = new Properties()
   props.put("bootstrap.servers", "localhost:9092")
   props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer")
   props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer")
 
+  // Create a new Kafka producer using the configuration properties
   val producer = new KafkaProducer[String, String](props)
 
+  // Read the order data from a file
   val filename = "src/main/scala/producer/online.retail.log"
-  for (line <- Source.fromFile(filename).getLines()) {
+  val lines = Source.fromFile(filename).getLines().toList
+
+  // Send the order data to Kafka
+  sendOrdersToKafka(lines, producer)
+
+  // Close the Kafka producer
+  producer.close()
+
+  // Helper function to parse a single line of order data and create an OrderData object
+  private def parseOrderData(line: String): OrderData = {
     val parts = line.split(",")
-    val data = Data(
+    OrderData(
       parts(0),
       parts(1),
       parts(2),
@@ -39,15 +52,24 @@ object Producer extends App {
       parts(6),
       parts(7)
     )
-
-    implicit val formats: Formats = DefaultFormats
-    val jsonData = Serialization.write(data)
-
-    val record = new ProducerRecord[String, String]("test-topic", s"key_${data.InvoiceNo}", jsonData)
-    producer.send(record)
-    println(s"Sent record: $record")
-    Thread.sleep(2000) // Sleep for 2 seconds after each line is read
-    //}
   }
-  producer.close()
+
+  // Helper function to send a list of order data to Kafka
+  private def sendOrdersToKafka(lines: List[String], producer: KafkaProducer[String, String]): Unit = {
+
+    // Set up JSON serialization
+    implicit val formats: Formats = DefaultFormats
+
+    // Loop through each line of order data, parse it, convert it to JSON, and send it to Kafka
+    for (line <- lines) {
+      val orderData = parseOrderData(line)
+      val jsonData = Serialization.write(orderData)
+
+      val record = new ProducerRecord[String, String]("orders-topic", s"key_${orderData.invoiceNo}", jsonData)
+      producer.send(record)
+      println(jsonData)
+
+      Thread.sleep(50) // Sleep for 50 milliseconds after each line is read
+    }
+  }
 }
