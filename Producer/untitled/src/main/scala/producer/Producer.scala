@@ -69,7 +69,7 @@ object Producer extends App {
       producer.send(record)
       println(jsonData)
 
-      Thread.sleep(50) // Sleep for 50 milliseconds after each line is read
+      Thread.sleep(2000) // Sleep for 50 milliseconds after each line is read
     }
   }
 }
