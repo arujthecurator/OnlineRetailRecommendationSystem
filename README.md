@@ -12,11 +12,11 @@
 
 ### Getting the application started:
 #### Producer:
-1. Import the Producer seprate projects to Intellij as Scala sbt project.
+1. Import the Producer to Intellij as Scala sbt project.
 2. Run the producer file, We should be able to see the messages being published from the console. This means that the messages are being pushed to orders-topic.
 
 #### Consumer:
-1. Import the Producer seprate projects to Intellij as Scala sbt project.
+1. Import the Consumer project separately to Intellij as Scala sbt project.
 2. Now, run the consumers. Since we gave mutliple consumer applications, we run them indivually to see the execution.
 
 ##### PartitionConsumer:
