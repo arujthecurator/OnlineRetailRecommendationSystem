@@ -33,5 +33,5 @@
 ##### RecommandationConsumer:
 1. This consumer takes the messages continuously and based on the items added in the cart, the consumer recommends the most frequently bought items with it to the customer.
 2. Run the RecommandationConsumer.scala.
-3. After execution, this program calls gps method in ML.scala file, which records the most frequently bought items mapping and stores them to result.log file.
+3. After execution, this program calls gsp method in ML.scala file, which records the most frequently bought items mapping and stores them to result.log file.
 4. Once the grouping of items are saved to result.log file, the program continuously consumes the messages from orders-topic and based on the items consumed, it recommends the items to customer. We should be able to see these results in the console log.
