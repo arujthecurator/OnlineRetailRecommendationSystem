@@ -35,3 +35,11 @@
 2. Run the RecommandationConsumer.scala.
 3. After execution, this program calls gsp method in ML.scala file, which records the most frequently bought items mapping and stores them to result.log file.
 4. Once the grouping of items are saved to result.log file, the program continuously consumes the messages from orders-topic and based on the items consumed, it recommends the items to customer. We should be able to see these results in the console log.
+
+#### Contributors:
+1.Aruj Nayak: aruj@vt.edu
+2.Sandeep Chinnareddy: sandeepc98@vt.edu
+3. Srikanth Karri: srikanthkarri@vt.edu
+4. Mohith Kamanuru: mohith@vt.edu
+5. Pavan Kumar Konatham: kpavankumar21@vt.edu
+6. Pavan Kumar Mulagalapati: pavankumar16@vt.edu
