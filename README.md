@@ -1,8 +1,10 @@
 # OnlineRetailRecommendationSystem
-1. Install Scala plugin in Intellij IDEA, 
-2. Install java8+ in your machine,
-3. Install sbt in your local machine from the following link- https://www.scala-sbt.org/download.html,
-4. The dataset that we have used for this project is taken from the following repository- https://archive.ics.uci.edu/ml/datasets/online+retail#
+### Requirements-
+1. Install Intellij IDEA and Docker Desktop,
+2. Install Scala plugin in Intellij IDEA, 
+3. Install java8+ in your machine,
+4. Install sbt in your local machine from the following link- https://www.scala-sbt.org/download.html,
+5. The dataset that we have used for this project is taken from the following repository- https://archive.ics.uci.edu/ml/datasets/online+retail#
 
 
 ### Set up process:
