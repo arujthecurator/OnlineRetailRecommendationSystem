@@ -1,4 +1,4 @@
-# OnlineRetailRecommendationSystem
+# Online Retail Real-Time Recommendation System
 ### Requirements-
 1. Install Intellij IDEA and Docker Desktop,
 2. Install Scala plugin in Intellij IDEA, 
